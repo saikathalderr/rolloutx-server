@@ -1,6 +1,6 @@
-import express, { json }from 'express';
-import cors from 'cors';
-import routes from './routes';
+import express, { json } from "express";
+import cors from "cors";
+import routes from "./routes";
 
 const app = express();
 
@@ -11,7 +11,6 @@ app.use(cors());
 app.use(json());
 
 // routes
-app.use(routes)
-
+app.use(routes);
 
 export default app;

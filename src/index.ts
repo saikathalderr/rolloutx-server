@@ -4,11 +4,10 @@ import server from "./server";
 const PORT = process.env.PORT || 3000;
 
 // Start server
-
 function startServer() {
   server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
   });
 }
 
-startServer()
+startServer();
