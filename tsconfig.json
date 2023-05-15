@@ -16,7 +16,7 @@
       "@domains/*": ["./domains/*"],
       "@role": ["./domains/authentication/role.ts"],
       "@db": ["./db.ts"],
-      "@messages": ["./constants/messages/const.messages.ts"]
+      "@messages": ["./constants/messages/const.messages.ts"],
     }
   },
   "include": ["src"]
