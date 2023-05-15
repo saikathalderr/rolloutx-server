@@ -10,6 +10,7 @@ const config: Config = {
   testMatch: ["**/*.test.ts"],
   moduleNameMapper: {
     "@src/(.*)": "<rootDir>/src/$1",
+    "@domains/(.*)": "<rootDir>/src/domains/$1",
   },
   transform: {
     "^.+\\.ts$": "ts-jest",
