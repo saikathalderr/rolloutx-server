@@ -1,27 +1,16 @@
 import bcrypt from "bcrypt";
 import { StatusCodes } from "http-status-codes";
 import request from "supertest";
-import { Server } from "http";
 
-import expressServer from "@src/server";
 import db from "@src/db";
 import {
   INVALID_PASSWORD,
   LOGIN_SUCCESS,
   USER_NOT_FOUND_IN_DB,
 } from "@src/constants/messages/const.messages";
+import app from "@src/server";
 
 describe("POST /authentication/login", () => {
-  let app: Server;
-
-  beforeAll(() => {
-    app = expressServer.listen(3000);
-  });
-
-  afterAll((done) => {
-    app.close(done);
-  });
-
   const endpoint = "/authentication/login";
 
   test("should throw error if no email or password provided", async () => {
