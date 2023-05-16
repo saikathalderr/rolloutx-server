@@ -1,18 +1,20 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import ac from "@src/domains/accesscontrol";
-import Role from "@role";
 import { _throwError } from "@src/helper/error";
 import { StatusCodes } from "http-status-codes";
-import { NO_PERMISSION } from "@messages";
+import { NO_PERMISSION, NO_ROLE } from "@messages";
+import Role from "@role";
 
-const canRegister = (req: any, res: Response, next: NextFunction) => {
+const canRegister = (req: Request, res: Response, next: NextFunction) => {
   try {
-    // const { role } = req?.user;
-    const bodyRol = req?.body?.role as Role;
-    if (!bodyRol) throw new Error(NO_PERMISSION);
+    const loggedInUserRole = req.user.role;
+    const registerUserRole = req?.body?.role as Role;
+    if (!registerUserRole || !Role[registerUserRole] || !loggedInUserRole)
+      throw new Error(NO_ROLE);
 
-    const permission = ac.can(Role[bodyRol]).create(Role.DEVELOPER);
-    console.log(bodyRol, permission.granted);
+    const permission = ac
+      .can(Role[loggedInUserRole])
+      .create(Role[registerUserRole]);
 
     if (!permission.granted) throw new Error(NO_PERMISSION);
     next();
