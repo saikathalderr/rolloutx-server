@@ -58,7 +58,7 @@ describe("POST /authentication/login", () => {
       role: "DEVELOPER",
       createdAt: new Date(),
       updatedAt: new Date(),
-      parentId: '2',
+      parentId: "2",
     };
 
     jest.spyOn(db.user, "findUnique").mockResolvedValue(user);
@@ -83,7 +83,7 @@ describe("POST /authentication/login", () => {
       role: "DEVELOPER",
       createdAt: new Date(),
       updatedAt: new Date(),
-      parentId: '2',
+      parentId: "2",
     };
 
     jest.spyOn(db.user, "findUnique").mockResolvedValue(user);

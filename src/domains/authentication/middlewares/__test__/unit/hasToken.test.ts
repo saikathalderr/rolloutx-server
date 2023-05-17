@@ -1,11 +1,11 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 
 import hasToken from "@domains/authentication/middlewares/hasToken";
 import { _throwError } from "@src/helper/error";
 
 jest.mock("@src/helper/error");
-jest.mock('jsonwebtoken', () => ({
+jest.mock("jsonwebtoken", () => ({
   verify: jest.fn(),
 }));
 
@@ -45,7 +45,7 @@ describe("hasAuthToken middleware", () => {
   it("should call next if token is present & valid token", () => {
     req.headers = { authorization: "Bearer myToken" };
     const verifyMock = jwt.verify as jest.Mock;
-    const user = { id: 1, name: 'John Doe' };
+    const user = { id: 1, name: "John Doe" };
 
     verifyMock.mockReturnValue(user);
 
