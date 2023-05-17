@@ -7,6 +7,7 @@ const config: Config = {
   testEnvironment: "node",
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
+  modulePathIgnorePatterns: ['@types'],
   coverageDirectory: "coverage",
   testMatch: ["**/*.test.ts"],
   moduleNameMapper: {

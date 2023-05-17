@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "allowJs": true,
     "outDir": "build",
     "rootDir": "src",
@@ -12,12 +14,28 @@
     "resolveJsonModule": true,
     "baseUrl": "./src",
     "paths": {
-      "@src/*": ["*"],
-      "@domains/*": ["./domains/*"],
-      "@role": ["./domains/authentication/role.ts"],
-      "@db": ["./db.ts"],
-      "@messages": ["./constants/messages/const.messages.ts"],
-    }
+      "@src/*": [
+        "*"
+      ],
+      "@domains/*": [
+        "./domains/*"
+      ],
+      "@role": [
+        "./domains/authentication/role.ts"
+      ],
+      "@db": [
+        "./db.ts"
+      ],
+      "@messages": [
+        "./constants/messages/const.messages.ts"
+      ],
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ],
 }

@@ -2,7 +2,7 @@
   "scripts": {
     "lint": "prettier --write \"src/**/*.ts\"",
     "test": "jest --testTimeout=10000",
-    "dev:server": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
+    "dev:server": "nodemon --watch './**/*.ts' --exec 'ts-node' --files src/index.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

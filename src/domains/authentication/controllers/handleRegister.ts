@@ -7,6 +7,9 @@ import { _throwError } from "@src/helper/error";
 
 import Role from "@role";
 import db from "@db";
+import { _handleSuccess } from "@src/helper/success";
+import { REGISTER_SUCCESS } from "@messages";
+import { StatusCodes } from "http-status-codes";
 
 export async function handleRegister(req: Request, res: Response) {
   try {
@@ -31,10 +34,11 @@ export async function handleRegister(req: Request, res: Response) {
       data: {
         ...newUser,
         password: bcrypt.hashSync(newUser.password, salt),
+        parentId: req.user.id,
       },
     });
 
-    res.send(user);
+    _handleSuccess(res, REGISTER_SUCCESS, user, StatusCodes.CREATED);
   } catch (error) {
     _throwError(res, error, 500);
   }
