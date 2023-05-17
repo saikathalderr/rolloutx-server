@@ -9,8 +9,6 @@ const canRegister = (req: Request, res: Response, next: NextFunction) => {
   try {
     const loggedInUserRole = req.user.role;
     const registerUserRole = req?.body?.role as Role;
-    console.log(loggedInUserRole,
-      registerUserRole);
 
     if (!registerUserRole || !Role[registerUserRole] || !loggedInUserRole)
       throw new Error(NO_ROLE);
