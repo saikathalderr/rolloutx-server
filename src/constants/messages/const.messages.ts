@@ -7,3 +7,4 @@ export const NO_TOKEN = "You need to provide auth token 🤥";
 export const UNAUTHORIZED_OR_INVALID_TOKEN = "Unauthorized or invalid token 🔐";
 export const NO_ROLE = "Role not found! 🫣";
 export const REGISTER_SUCCESS = "register success! 🎉";
+export const TICKET_CREATED = "Ticket created! 🎉";

@@ -8,15 +8,30 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String
-  password  String
-  avatar    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  role      String   @default("DEVELOPER")
-  parent    User?    @relation("employees", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  employees User[]   @relation("employees")
-  parentId  String?  @map("parent_id") @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  email      String   @unique
+  name       String
+  password   String
+  avatar     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  role       String   @default("DEVELOPER")
+  parent     User?    @relation("employees", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  employees  User[]   @relation("employees")
+  parentId   String?  @map("parent_id") @db.ObjectId
+  assignedTo Ticket[] @relation("AssignedTo")
+  authorOf   Ticket[] @relation("Author")
+}
+
+model Ticket {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  content      String
+  status       String   @default("TODO")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  author       User     @relation(name: "Author", fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  authorId     String   @map("author_id") @db.ObjectId
+  assignedTo   User?    @relation(name: "AssignedTo", fields: [assignedToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  assignedToId String?  @map("assigned_to_id") @db.ObjectId
 }

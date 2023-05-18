@@ -4,6 +4,7 @@ import { Role } from "@role";
 
 const ac = new AccessControl();
 
+// Users
 ac.grant(Role.DEVELOPER)
   .readOwn(attributes.user.developer)
   .updateOwn(attributes.user.developer);
@@ -29,5 +30,23 @@ ac.grant(Role.ADMIN)
   .readAny(attributes.user.admin)
   .updateAny(attributes.user.admin)
   .deleteAny(attributes.user.admin);
+
+// Tickets
+ac.grant(Role.DEVELOPER)
+  .createAny(attributes.ticket)
+  .readAny(attributes.ticket)
+  .updateAny(attributes.ticket);
+
+ac.grant(Role.PRODUCT_OWNER)
+  .createAny(attributes.ticket)
+  .readAny(attributes.ticket)
+  .updateAny(attributes.ticket)
+  .deleteAny(attributes.ticket);
+
+ac.grant(Role.ADMIN)
+  .createAny(attributes.ticket)
+  .readAny(attributes.ticket)
+  .updateAny(attributes.ticket)
+  .deleteAny(attributes.ticket);
 
 export default ac;
